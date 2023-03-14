@@ -37,7 +37,7 @@ func main() {
 		process := func(sleep time.Duration) {
 			defer time.Sleep(sleep * time.Second)
 			currentTime := time.Now().Format("2006-01-02 15:04:05")
-			if lastSendMail.Unix() <= time.Now().Add(10*time.Minute).Unix() {
+			if lastSendMail.Add(10*time.Minute).Unix() <= time.Now().Unix() {
 				lastSendMail = time.Now()
 				if err := mailSender.SendToMail(emailConf.User, subject, currentTime); err != nil {
 					log.Printf("[ERR]\tSEND IP:%s", err.Error())
