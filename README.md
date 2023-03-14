@@ -5,7 +5,7 @@ Use email for dynamic IP auto-writing to domain name A records
 Currently only aliyun DDNS are supported
 
 ### How to get it?
-[download email-ddns-linux-x64](https://github.com/gobkc/email-ddns/releases/download/v1.0.0/email-ddns)
+[download email-ddns-linux-x64](https://github.com/gobkc/email-ddns/releases/download/v1.0.1/email-ddns)
 
 ### Configuration
 ````
