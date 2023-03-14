@@ -16,5 +16,5 @@ vendor/
 /vendor/
 .idea
 .idea/
-ddns
+email-ddns
 config.json

@@ -31,18 +31,26 @@ func main() {
 	}
 	data, _ := json.MarshalIndent(conf, "", "\t")
 	log.Printf("[INFO]\tRead Configure:\n%s\n", string(data))
+	lastSendMail := time.Now()
+	subject := fmt.Sprintf(emailReader.DomainFilter, conf.Domain)
 	for {
 		process := func(sleep time.Duration) {
 			defer time.Sleep(sleep * time.Second)
+			currentTime := time.Now().Format("2006-01-02 15:04:05")
+			if lastSendMail.Unix() <= time.Now().Add(10*time.Minute).Unix() {
+				if err := mailSender.SendToMail(emailConf.User, subject, currentTime); err != nil {
+					log.Printf("[ERR]\tSEND IP:%s", err.Error())
+					return
+				}
+			}
 			ip, err := emailReader.GetIp(emailConf.Imap, emailConf.User, emailConf.Pass, conf.Domain)
 			if err != nil {
 				log.Printf("[ERR]\tGET IP:\t%s", err.Error())
 			}
-			currentTime := time.Now().Format("2006-01-02 15:04:05")
 			log.Printf("[INFO]\tGET IP:%s\t%s", ip, currentTime)
 			if currentIP != ip || err != nil {
 				currentIP = ip
-				subject := fmt.Sprintf(emailReader.DomainFilter, conf.Domain)
+				lastSendMail = time.Now()
 				if err := mailSender.SendToMail(emailConf.User, subject, currentTime); err != nil {
 					log.Printf("[ERR]\tSEND IP:%s", err.Error())
 					return
