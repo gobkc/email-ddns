@@ -2,6 +2,7 @@ package internal
 
 type Conf struct {
 	Domain   string `json:"domain"`
+	Ping     string `json:"ping"`
 	Interval int64  `json:"interval"`
 	Email    Email  `json:"email"`
 	Dns      Dns    `json:"dns"`

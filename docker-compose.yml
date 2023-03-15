@@ -1,0 +1,8 @@
+version: '3'
+services:
+  email-ddns:
+    hostname: email-ddns
+    image: registry.cn-shenzhen.aliyuncs.com/core-image/email-ddns:latest
+    restart: always
+    volumes:
+      - ./config.json:/app/config.json

@@ -2,16 +2,18 @@
 Use email for dynamic IP auto-writing to domain name A records
 
 ### Note
-Currently only aliyun DDNS are supported
+- Currently only aliyun DDNS are supported
+- Email-ddns must have root permission
 
 ### How to get it?
-[download email-ddns-linux-x64](https://github.com/gobkc/email-ddns/releases/download/v1.0.1/email-ddns)
+[download email-ddns-linux-x64](https://github.com/gobkc/email-ddns/releases/download/v1.0.2/email-ddns)
 
 ### Configuration
 ````
 {
   "domain": "kafs.cn",
   "interval": 15,
+  "ping": "114.114.114.114",
   "email": {
     "imap": "imap.163.com:993",
     "pop3": "smtp.163.com:25",

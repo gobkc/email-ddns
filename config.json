@@ -1,0 +1,15 @@
+{
+  "domain": "kafs.cn",
+  "ping": "114.114.114.114",
+  "interval": 15,
+  "email": {
+    "imap": "imap.163.com:993",
+    "pop3": "smtp.163.com:25",
+    "user": "xxx@163.com",
+    "pass": "your email password"
+  },
+  "dns": {
+    "key": "your ali ddns key",
+    "secret": "your ali ddns secret"
+  }
+}
